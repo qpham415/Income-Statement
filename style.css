@@ -1,0 +1,10 @@
+body {
+  background-color: white; 
+}
+#pagewrap {
+  margin: 0 auto 30px auto;
+  width: 800px;
+}
+.clear {
+  clear: both;
+}
