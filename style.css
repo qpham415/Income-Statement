@@ -2,8 +2,214 @@ body {
   background-color: white; 
 }
 #pagewrap {
-  margin: 0 auto 30px auto;
+  margin: 40px auto 30px auto;
   width: 800px;
+}
+#heading {
+  margin-left: 20px;
+}
+#header {
+  text-align: left;
+  font-weight: bold;
+  font-size: 20px;
+}
+#companyname {
+  float: left;
+  border: 0;
+  font-size: 15px;
+  height: 19px;
+  width: 240px;
+  font-weight: bold;
+}
+#companyname:hover {
+  background: #f9f1be;
+}
+#subhead {
+  float: left;
+  font-weight: bold;
+}
+#date {
+  float: left;
+  margin-top: 15px;
+  height: 19px;
+  font-weight: bold;
+  font-size: 13px;
+}
+.month {
+  width: 113px;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 5px;
+  border: 0;
+}
+.month:hover {
+  background: #f9f1be;
+}
+#stated {
+  float: left;
+  margin: 15px 0 0 160px;
+  height: 19px;
+  font-size: 13px;
+}
+#statedinput {
+  font-weight: bold;
+  width: 80px;
+  margin-left: 3px;
+  border: 0;
+}
+#statedinput:hover {
+  background: #f9f1be;
+}
+#marginreturn {
+  background: #eceff4;
+  margin-top: 10px;
+  width: 410px;
+  font-size: 13px;
+}
+#marginreturn td {
+  padding: 4px;
+}
+#marginreturn td.desc {
+  width: 280px;
+}
+#marginreturn td.value {
+  width: 120px;
+}
+#gmargin {
+  text-align: left;
+  width: 280px;
+  background: transparent;
+  font-weight: bold;
+  border: 0;
+}
+#rosales {
+  text-align: left;
+  width: 280px;
+  background: transparent;
+  font-weight: bold;
+  border: 0;
+}
+.gmargininput {
+  width: 120px;
+  text-align: center;
+  background: transparent;
+  border: 0;
+}
+#gmargin:hover, #rosales:hover, .gmargininput:hover {
+  background: #f9f1be;
+}
+table {
+  width: 100%;
+  margin-top: 10px;
+  table-layout: fixed;
+}
+.data input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+.data input:hover {
+  background:#f9f1be;
+}
+.data th#openbox {
+  width: 314px;
+  padding-left: 5px;
+}
+.data th.trinput {
+  width: 76px;
+  height: 50px;
+  text-align: center;
+  border: 1px solid #bbc6d7;
+}
+.data td.tdheader {
+  text-align: left;
+  font-weight: bold;
+  padding: 15px 0 0 2px;
+  border-top: 1px solid #bbc6d7;
+  border-bottom: 1px solid #bbc6d7;
+}
+.data input.itemdesc {
+  text-align: left;
+  margin-left: 5px;
+  width: 309px;
+}
+.data input.itemtotal {
+  text-align: left;
+  font-weight: bold;
+  margin-left: 2px;
+  width: 312px;
+}
+.data td {
+  padding: 4px 0;
+}
+.data td.tdwhite {
+  border: 1px solid #bbc6d7;
+}
+.data td.tdgrey {
+  border: 1px solid #bbc6d7;
+  background: #eceff4;
+}
+.data td.blank {
+  padding: 4px 0;
+}
+.data th#opexp {
+  text-align: left;
+  font-weight: bold;
+  padding: 8px 0 0 2px;
+  width: 314px;
+}
+.data td#sam {
+  text-align: left;
+  font-weight: bold;
+  padding: 1px 0 0 2px;
+  color: #003365;
+}
+.data input.totalblue {
+  text-align: left;
+  font-weight: bold;
+  color: #003365;
+  margin-left: 2px;
+  width: 312px;
+}
+.data th.headerblue {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 0 0 2px;
+  color: #003365;
+  width: 314px;
+}
+.data th.wdesc {
+  width: 314px;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 2px;
+}
+.data th.winput {
+  width: 76px;
+}
+.data th.nocancel {
+  width: 20px;
+}
+.data th.cancel {
+  padding: 2px;
+  width: 16px;
+  background: transparent;
+}
+.close {
+  background: url('images/cancel.png') no-repeat;
+  display: block;
+  height: 16px;
+  width: 16px;
+  margin: auto;
+}
+.add {
+  display: block;
+  text-align: left;
+  padding-left: 10px;
+}
+#fakerow, #cosfakerow, #salesmarket-fakerow, #rd-fakerow, #general-fakerow, #taxes-fakerow {
+  display:none;
 }
 .clear {
   clear: both;

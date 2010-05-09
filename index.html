@@ -11,7 +11,779 @@
   </head>
   <body>
     <div id="pagewrap">
-      
+    <div id="heading">  
+      <div id="header">Profit and Loss Statement</div>
+      <input id="companyname" type="text" value="[Company Name]"/>
+      <div class="clear"></div>
+      <div id="subhead">
+        <div id="date">
+          For the<input class="month" type="text" value="[Month or Year]" />
+          ending<input class="month" type="text" value="[Month-Day-Year]" />
+        </div>        
+        <div id="stated">
+          Stated in<input id="statedinput" type="text" value="000s" /> 
+        </div>
+      </div>
+      <div class="clear"></div>
+      <table id="marginreturn">
+        <tbody>
+          <tr>
+            <td class="desc"><input id="gmargin" type="text" value="Gross Margin [L/J]"/></td>
+            <td class="value"><input class="gmargininput" type="text" value="-" id="gm-total"/></td>
+          </tr>
+          <tr>
+            <td class="desc"><input id="rosales" type="text" value="Return on sales [T/J]" /></td>
+            <td class="value"><input class="gmargininput" type="text" value="-" id="ros-total"/></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <table id="salesrev" class="data">
+        <thead>
+          <tr>
+            <th class="nocancel"></th>
+            <th id="openbox"></th>
+            <th class="trinput">Prior Period</th>
+            <th class="trinput">Budget</th>
+            <th class="trinput">Current Period</th>
+            <th class="trinput">Current Period as % of Sales</th>
+            <th class="trinput">% Change from Prior Period</th>
+            <th class="trinput">% Change from Budget</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="nocanceld"></td>
+            <td class="tdheader" colspan="7">Sales Revenue</td>                          
+          </tr>
+          <tr class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td>  
+          </tr>
+          <tr class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td>  
+          </tr>
+          <tr class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>            
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td>  
+          </tr>
+          <tr class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>           
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td>  
+          </tr>
+          <tr id="fakerow" class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>           
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td>  
+          </tr>
+          <tr id="bottomrow">
+            <td class="nocanceld"></td>
+            <td id="salesrev-addrow" colspan="7"><a class="add" href="javascript:;">Add Row</a></td>
+          </tr>                                                  
+          <tr>
+            <td class="nocancel"></td>          
+            <td class="tdwhite">
+              <input class="itemtotal" type="text" value="Total Sales Revenue [J]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="salesrev-prior-total" class="prior-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="salesrev-budget-total" class="budget-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="salesrev-current-total" class="current-total"/></td>
+            <td class="tdgrey"><input type="text" value="-" id="salesrev-current-percent-total"/></td>
+            <td class="tdgrey"><input type="text" value="-" id="salesrev-prior-percent-total"/></td>
+            <td class="tdgrey"><input type="text" value="-" id="salesrev-budget-percent-total"/></td>  
+          </tr>
+        </tbody>
+      </table>
+      <table id="cos" class="data">
+        <thead>
+          <tr>
+            <th class="nocancel"></th>            
+            <th class="wdesc">Cost of Sales</th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>                          
+          </tr>
+        </thead>  
+        <tbody>  
+          <tr class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td> 
+          </tr>
+          <tr class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td> 
+          </tr>
+          <tr class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td> 
+          </tr>
+          <tr class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td>  
+          </tr>
+          <tr id="cosfakerow" class="data-row">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Product/Service" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-" class="current-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="prior-percent" /></td>
+            <td class="tdgrey"><input type="text" value="-" class="budget-percent" /></td>  
+          </tr>
+          <tr id="cosbottomrow">
+            <td class="nocanceld"></td>
+            <td id="cosaddrow" colspan="7"><a class="add" href="javascript:;">Add Row</a></td>
+          </tr>                                                            
+          <tr>
+            <td class="nocancel"></td>
+            <td class="tdwhite">
+              <input class="itemtotal" type="text" value="Total Cost of Sales [K]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="cos-prior-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="cos-budget-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="cos-current-total"/></td>
+            <td class="tdgrey"><input type="text" value="-" id="cos-current-percent-total"/></td>
+            <td class="tdgrey"><input type="text" value="-" id="cos-prior-percent-total"/></td>
+            <td class="tdgrey"><input type="text" value="-" id="cos-budget-percent-total"/></td>  
+          </tr> 
+          <tr>
+            <td class="blank" colspan="7"></td>
+          </tr>
+          <tr>
+            <td class="nocancel"></td>
+            <td class="tdgrey">
+              <input class="itemtotal" type="text" value="Gross Proft [L=J-K]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="gross-prior"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="gross-budget"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="gross-current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+        </tbody>
+      </table>
+      <table id="salesmarket" class="data">
+        <thead>
+          <tr>
+            <th class="nocancel"></th>
+            <th id="opexp">Operating Expenses</th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>                          
+          </tr>
+        </thead>        
+        <tbody>          
+          <tr>
+            <td class="nocancel"></td>
+            <td id="sam" colspan="7">Sales and Marketing</td>
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Advertising" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>           
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Direct marketing" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>           
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>            
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr id="salesmarket-fakerow">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr id="salesmarket-bottomrow">
+            <td class="nocanceld"></td>
+            <td id="salesmarket-addrow" colspan="7"><a class="add" href="javascript:;">Add Row</a></td>
+          </tr>                                                  
+          <tr>
+            <td class="nocancel"></td>            
+            <td class="tdwhite">
+              <input class="totalblue" type="text" value="Total Sales and Marketing Expenses [M]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="salesmarket-prior-total" /></td>
+            <td class="tdgrey"><input type="text" value="0" id="salesmarket-budget-total" /></td>
+            <td class="tdgrey"><input type="text" value="0" id="salesmarket-current-total" /></td>
+            <td class="tdgrey"><input type="text" value="-" /></td>
+            <td class="tdgrey"><input type="text" value="-" /></td>
+            <td class="tdgrey"><input type="text" value="-" /></td>  
+          </tr>
+        </tbody>
+      </table>
+      <table id="rd" class="data">
+        <thead>
+          <tr>
+            <th class="nocancel"></th>
+            <th class="headerblue">Research and Development</th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>                          
+          </tr>
+        </thead>        
+        <tbody>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Technology licenses" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>            
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Patents" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>            
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>            
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr id="rd-fakerow">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr id="rd-bottomrow">
+            <td class="nocanceld"></td>
+            <td id="rd-addrow" colspan="7"><a class="add" href="javascript:;">Add Row</a></td>
+          </tr>                                                  
+          <tr>
+            <td class="nocanceld"></td>
+            <td class="tdwhite">
+              <input class="totalblue" type="text" value="Total Research and Development Expenses [N]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="rd-prior-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="rd-budget-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="rd-current-total"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+        </tbody>
+      </table>
+      <table id="general" class="data">
+        <thead>
+          <tr>
+            <th class="nocancel"></th>
+            <th class="headerblue">General and Administrative</th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>                          
+          </tr>
+        </thead>        
+        <tbody>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Wages and salaries" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Outside services" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Supplies" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Meals and entertainment" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Rent" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Telephone" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Utilities" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Depreciation" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Insurance" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Repairs and maintenance" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>                              
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr id="general-fakerow">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other expenses (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr id="general-bottomrow">
+            <td class="nocanceld"></td>
+            <td id="general-addrow" colspan="7"><a class="add" href="javascript:;">Add Row</a></td>
+          </tr>                                                  
+          <tr>
+            <td class="nocanceld"></td>
+            <td class="tdwhite">
+              <input class="totalblue" type="text" value="Total General and Administrative Expenses [O]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="general-prior-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="general-budget-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="general-current-total"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="blank" colspan="7"></td>
+          </tr>
+          <tr>
+            <td class="nocanceld"></td>
+            <td class="tdwhite">
+              <input class="itemtotal" type="text" value="Total Operating Expenses [P=M+N+O]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="opexp-prior-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="opexp-budget-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="opexp-current-total"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="nocanceld"></td>
+            <td class="blank" colspan="7"></td>
+          </tr>
+          <tr>
+            <td class="nocanceld"></td>
+            <td class="tdgrey">
+              <input class="itemtotal" type="text" value="Income from Operations [Q=L-P]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="income-prior-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="income-budget-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="income-current-total"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="nocanceld"></td>            
+            <td class="blank" colspan="7"></td>
+          </tr>
+          <tr>
+            <td class="nocanceld"></td>            
+            <td class="tdwhite">
+              <input class="itemtotal" type="text" value="Other Income [R]" />
+            </td>
+            <td class="tdwhite"><input type="text" id="other-prior-total" value="0"/></td>
+            <td class="tdwhite"><input type="text" id="other-budget-total" value="0"/></td>
+            <td class="tdwhite"><input type="text" id="other-current-total" value="0"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+        </tbody>    
+      </table>
+      <table id="taxes" class="data">
+        <thead>
+          <tr>
+            <th class="nocancel"></th>
+            <th class="wdesc">Taxes</th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>
+            <th class="winput"></th>                          
+          </tr>
+        </thead>        
+        <tbody>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Income taxes" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Payroll taxes" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Real estate taxes" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other taxes (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="cancel"><a class="close" href="javascript:;"></a></td>             
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other taxes (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior"/></td>
+            <td class="tdwhite"><input type="text" class="budget"/></td>
+            <td class="tdwhite"><input type="text" class="current"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr id="taxes-fakerow">
+            <td class="cancel"><a class="close" href="javascript:;"></a></td> 
+            <td class="tdwhite">
+              <input class="itemdesc" type="text" value="Other taxes (specify)" />
+            </td>
+            <td class="tdwhite"><input type="text" class="prior" /></td>
+            <td class="tdwhite"><input type="text" class="budget" /></td>
+            <td class="tdwhite"><input type="text" class="current" /></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr id="taxes-bottomrow">
+            <td class="nocanceld"></td>
+            <td id="taxes-addrow" colspan="7"><a class="add" href="javascript:;">Add Row</a></td>
+          </tr>                                                            
+          <tr>
+            <td class="nocanceld"></td>
+            <td class="tdwhite">
+              <input class="itemtotal" type="text" value="Total Taxes [S]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="taxes-prior-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="taxes-budget-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="taxes-current-total"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>
+          <tr>
+            <td class="nocanceld"></td>
+            <td class="blank" colspan="7"></td>
+          </tr>
+          <tr>
+            <td class="nocaneld"></td>
+            <td class="tdgrey">
+              <input class="itemtotal" type="text" value="Net Profit [T=Q+R-S]" />
+            </td>
+            <td class="tdgrey"><input type="text" value="0" id="profit-prior-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="profit-budget-total"/></td>
+            <td class="tdgrey"><input type="text" value="0" id="profit-current-total"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>
+            <td class="tdgrey"><input type="text" value="-"/></td>  
+          </tr>                                                          
+        </tbody>    
+      </table>
     </div>
   </body>
 </html>
