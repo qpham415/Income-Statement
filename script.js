@@ -40,17 +40,6 @@ function roundNumber(number,decimals) {
   //var newNumber = Number(newString);// make it a number if you like
   return newString; // Output the result to the form field (for your purpose)
 }
-//function update_subtotal () {
-//  var subtotal_value = 0;
-//  $('#data .linetotal').map(function(){
-//    var money = to_float($(this).val());
-//    if (!isNaN(money)) {
-//      subtotal_value += money;
-//    }
-//  });
-//  $('#data #subtotal-value').val(to_currency(subtotal_value));
-//  update_finaltotal();
-//}
 function doMath(col, col_total){
   var subtotal_totals = 0;
   $(col).map(function(){
@@ -59,31 +48,11 @@ function doMath(col, col_total){
     }
   });
   subtotal_totals = roundNumber(subtotal_totals,2);
-  $(col_total).val(subtotal_totals);  
-  var gross_prior_totals = parseFloat($('#salesrev-prior-total').val()) - parseFloat($('#cos-prior-total').val());
-  $('#gross-prior').val(gross_prior_totals);
-  var gross_budget_totals = parseFloat($('#salesrev-budget-total').val()) - parseFloat($('#cos-budget-total').val());
-  $('#gross-budget').val(gross_budget_totals);
-  var gross_current_totals = parseFloat($('#salesrev-current-total').val()) - parseFloat($('#cos-current-total').val());
-  $('#gross-current').val(gross_current_totals);
-  var opexp_prior_totals = parseFloat($('#salesmarket-prior-total').val()) + parseFloat($('#rd-prior-total').val()) + parseFloat($('#general-prior-total').val());
-  $('#opexp-prior-total').val(opexp_prior_totals);
-  var opexp_budget_totals = parseFloat($('#salesmarket-budget-total').val()) + parseFloat($('#rd-budget-total').val()) + parseFloat($('#general-budget-total').val());
-  $('#opexp-budget-total').val(opexp_budget_totals);
-  var opexp_current_totals = parseFloat($('#salesmarket-current-total').val()) + parseFloat($('#rd-current-total').val()) + parseFloat($('#general-current-total').val());
-  $('#opexp-current-total').val(opexp_current_totals);
-  var income_prior_totals = parseFloat($('#gross-prior').val()) - parseFloat($('#opexp-prior-total').val());
-  $('#income-prior-total').val(income_prior_totals);
-  var income_budget_totals = parseFloat($('#gross-budget').val()) - parseFloat($('#opexp-budget-total').val());
-  $('#income-budget-total').val(income_budget_totals);
-  var income_current_totals = parseFloat($('#gross-current').val()) - parseFloat($('#opexp-current-total').val());
-  $('#income-current-total').val(income_current_totals);
-  var profit_prior_totals = parseFloat($('#income-prior-total').val()) + parseFloat($('#other-prior-total').val()) - parseFloat($('#taxes-prior-total').val());
-  $('#profit-prior-total').val(profit_prior_totals);
-  var profit_budget_totals = parseFloat($('#income-budget-total').val()) + parseFloat($('#other-budget-total').val()) - parseFloat($('#taxes-budget-total').val());
-  $('#profit-budget-total').val(profit_budget_totals);  
-  var profit_current_totals = parseFloat($('#income-current-total').val()) + parseFloat($('#other-current-total').val()) - parseFloat($('#taxes-current-total').val());
-  $('#profit-current-total').val(profit_current_totals);
+  $(col_total).val(subtotal_totals);
+  do_gross_profit();
+  do_opexp();
+  do_income();  
+  do_profit();
   var gm_totals = parseFloat($('#gross-current').val()) / parseFloat($('#salesrev-current-total').val());
   gm_totals = roundNumber(gm_totals,2);
   $('#gm-total').val(gm_totals);
@@ -91,42 +60,95 @@ function doMath(col, col_total){
   ros_totals = roundNumber(ros_totals,2);
   $('#ros-total').val(ros_totals);
 }
+function do_gross_profit (){
+  var gross_prior_totals = parseFloat($('#salesrev-prior-total').val()) - parseFloat($('#cos-prior-total').val());
+  gross_prior_totals = roundNumber(gross_prior_totals,2);
+  $('#gross-prior').val(gross_prior_totals);  
+  var gross_budget_totals = parseFloat($('#salesrev-budget-total').val()) - parseFloat($('#cos-budget-total').val());
+  gross_budget_totals = roundNumber(gross_budget_totals,2);  
+  $('#gross-budget').val(gross_budget_totals);
+  var gross_current_totals = parseFloat($('#salesrev-current-total').val()) - parseFloat($('#cos-current-total').val());
+  gross_current_totals = roundNumber(gross_current_totals,2);  
+  $('#gross-current').val(gross_current_totals);
+  var gross_current_percent = (parseFloat($('#gross-current').val()) / parseFloat($('#salesrev-current-total').val())) * 100;
+  gross_current_percent = roundNumber(gross_current_percent,2);    
+  $('#gross-current-percent').val(gross_current_percent);    
+}
+function do_opexp (){
+  var opexp_prior_totals = parseFloat($('#salesmarket-prior-total').val()) + parseFloat($('#rd-prior-total').val()) + parseFloat($('#general-prior-total').val());
+  opexp_prior_totals = roundNumber(opexp_prior_totals,2);
+  $('#opexp-prior-total').val(opexp_prior_totals);
+  var opexp_budget_totals = parseFloat($('#salesmarket-budget-total').val()) + parseFloat($('#rd-budget-total').val()) + parseFloat($('#general-budget-total').val());
+  opexp_budget_totals = roundNumber(opexp_budget_totals,2);
+  $('#opexp-budget-total').val(opexp_budget_totals);
+  var opexp_current_totals = parseFloat($('#salesmarket-current-total').val()) + parseFloat($('#rd-current-total').val()) + parseFloat($('#general-current-total').val());
+  opexp_current_totals = roundNumber(opexp_current_totals,2);  
+  $('#opexp-current-total').val(opexp_current_totals);
+}
+function do_income (){
+  var income_prior_totals = parseFloat($('#gross-prior').val()) - parseFloat($('#opexp-prior-total').val());
+  $('#income-prior-total').val(income_prior_totals);
+  var income_budget_totals = parseFloat($('#gross-budget').val()) - parseFloat($('#opexp-budget-total').val());
+  $('#income-budget-total').val(income_budget_totals);
+  var income_current_totals = parseFloat($('#gross-current').val()) - parseFloat($('#opexp-current-total').val());
+  $('#income-current-total').val(income_current_totals);  
+}
+function do_profit (){
+  var profit_prior_totals = parseFloat($('#income-prior-total').val()) + parseFloat($('#other-prior-total').val()) - parseFloat($('#taxes-prior-total').val());
+  $('#profit-prior-total').val(profit_prior_totals);
+  var profit_budget_totals = parseFloat($('#income-budget-total').val()) + parseFloat($('#other-budget-total').val()) - parseFloat($('#taxes-budget-total').val());
+  $('#profit-budget-total').val(profit_budget_totals);  
+  var profit_current_totals = parseFloat($('#income-current-total').val()) + parseFloat($('#other-current-total').val()) - parseFloat($('#taxes-current-total').val());
+  $('#profit-current-total').val(profit_current_totals);  
+}
 function update_all_salesrev (){
   doMath('#salesrev .prior', '#salesrev-prior-total');  
   doMath('#salesrev .budget', '#salesrev-budget-total');  
-  doMath('#salesrev .current','#salesrev-current-total');   
-  update_current(this);
-  update_prior(this);
-  update_budget(this);  
+  doMath('#salesrev .current','#salesrev-current-total'); 
+  update_current('#salesrev .current');
+  var prior_percent_total = (parseFloat($('#salesrev-current-total').val()) / parseFloat($('#salesrev-prior-total').val()) - 1) * 100;
+  prior_percent_total = roundNumber(prior_percent_total,2);    
+  $('#salesrev-prior-percent-total').val(prior_percent_total);
+  var budget_percent_total = (parseFloat($('#salesrev-current-total').val()) / parseFloat($('#salesrev-budget-total').val()) - 1) * 100;
+  budget_percent_total = roundNumber(budget_percent_total,2);    
+  $('#salesrev-budget-percent-total').val(budget_percent_total);
+  var current_percent_total = (parseFloat($('#salesrev-current-total').val()) / parseFloat($('#salesrev-current-total').val())) * 100;
+  current_percent_total = roundNumber(current_percent_total,2);    
+  $('#salesrev-current-percent-total').val(current_percent_total);
+  do_gross_profit();   
+}
+function update_all_cos (){
+  doMath('#cos .prior', '#cos-prior-total');  
+  doMath('#cos .budget', '#cos-budget-total');  
+  doMath('#cos .current','#cos-current-total');  
+  update_current('#cos .current');
+  var prior_percent_total = (parseFloat($('#cos-current-total').val()) / parseFloat($('#cos-prior-total').val()) - 1) * 100;
+  prior_percent_total = roundNumber(prior_percent_total,2);    
+  $('#cos-prior-percent-total').val(prior_percent_total);
+  var budget_percent_total = (parseFloat($('#cos-current-total').val()) / parseFloat($('#cos-budget-total').val()) - 1) * 100;
+  budget_percent_total = roundNumber(budget_percent_total,2);    
+  $('#cos-budget-percent-total').val(budget_percent_total);
+  var current_percent_total = (parseFloat($('#cos-current-total').val()) / parseFloat($('#salesrev-current-total').val())) * 100;
+  current_percent_total = roundNumber(current_percent_total,2);    
+  $('#cos-current-percent-total').val(current_percent_total);
+  do_gross_profit();
 }
 function update_current (target) {
   var rows = $(target).parents('table').find('.data-row');
-  rows.map(function(){  
-    var current_value = $(this).find('.current').val() / $(target).parents('table').find('.current-total').val() * 100;
+  rows.map(function(){
+    var current_value = $(this).find('.current').val() / $('#salesrev-current-total').val() * 100;  
+//    var current_value = $(this).find('.current').val() / $(target).parents('table').find('.current-total').val() * 100;
     current_value = roundNumber(current_value,2);
     $(this).find('.current-percent').val(current_value);
   });
-  doMath('#salesrev .prior-percent','#salesrev-prior-percent-total');
-  doMath('#salesrev .budget-percent','#salesrev-budget-percent-total');
-  doMath('#salesrev .current-percent','#salesrev-current-percent-total');       
-}
-function update_prior (target) {
+}          
+function update_percent (target, col, col_percent) {
   var row = $(target).parents('.data-row');
-  var prior_value = (parseFloat(row.find('.current').val()) / parseFloat(row.find('.prior').val()) - 1) * 100;
-  prior_value = roundNumber(prior_value,2);
-  if (!isNaN(prior_value)){  
-    row.find('.prior-percent').val(prior_value);
+  var percent_value = (parseFloat(row.find('.current').val()) / parseFloat(row.find(col).val()) - 1) * 100;
+  percent_value = roundNumber(percent_value,2);
+  if (!isNaN(percent_value)){  
+    row.find(col_percent).val(percent_value);
   }
-  doMath('#salesrev .prior-percent','#salesrev-prior-percent-total'); 
-}
-function update_budget (target) {
-  var row = $(target).parents('.data-row');
-  var budget_value = (parseFloat(row.find('.current').val()) / parseFloat(row.find('.budget').val()) - 1) * 100;
-  budget_value = roundNumber(budget_value,2);
-  if (!isNaN(budget_value)){
-    row.find('.budget-percent').val(budget_value);
-  }
-  doMath('#salesrev .budget-percent','#salesrev-budget-percent-total');  
 }
 function doRow(bottom, fake){
     $(bottom).before($(fake).clone().show());
@@ -134,7 +156,8 @@ function doRow(bottom, fake){
 $(document).ready(function(){
   $('.cancel').live('click',function(){
     $(this).parents('tr').remove();
-  update_all_salesrev();  
+    update_all_salesrev();
+    update_all_cos();  
   }); 
   $('#salesrev-addrow').click(function(){
     doRow('#bottomrow','#fakerow');
@@ -155,28 +178,62 @@ $(document).ready(function(){
     doRow('#taxes-bottomrow','#taxes-fakerow');
   })
   $('#salesrev .prior').live('change',function(){
-    doMath('#salesrev .prior', '#salesrev-prior-total');   
-    update_prior(this);
+    doMath('#salesrev .prior', '#salesrev-prior-total');      
+    update_percent(this, '.prior','.prior-percent');
+    var prior_percent_total = (parseFloat($('#salesrev-current-total').val()) / parseFloat($('#salesrev-prior-total').val()) - 1) * 100;
+    prior_percent_total = roundNumber(prior_percent_total,2);    
+    $('#salesrev-prior-percent-total').val(prior_percent_total);      
   });
   $('#salesrev .budget').live('change',function(){
     doMath('#salesrev .budget', '#salesrev-budget-total');
-    update_budget(this);     
+    update_percent(this,'.budget','.budget-percent');
+    var budget_percent_total = (parseFloat($('#salesrev-current-total').val()) / parseFloat($('#salesrev-budget-total').val()) - 1) * 100;
+    budget_percent_total = roundNumber(budget_percent_total,2);    
+    $('#salesrev-budget-percent-total').val(budget_percent_total);  
   });
   $('#salesrev .current').live('change',function(){
     doMath('#salesrev .current','#salesrev-current-total');   
     update_current(this);
-    update_prior(this);
-    update_budget(this);   
+    update_percent(this,'.prior','.prior-percent');
+    update_percent(this,'.budget','.budget-percent');
+    var prior_percent_total = (parseFloat($('#salesrev-current-total').val()) / parseFloat($('#salesrev-prior-total').val()) - 1) * 100;
+    prior_percent_total = roundNumber(prior_percent_total,2);    
+    $('#salesrev-prior-percent-total').val(prior_percent_total);
+    var budget_percent_total = (parseFloat($('#salesrev-current-total').val()) / parseFloat($('#salesrev-budget-total').val()) - 1) * 100;
+    budget_percent_total = roundNumber(budget_percent_total,2);    
+    $('#salesrev-budget-percent-total').val(budget_percent_total);
+    var current_percent_total = (parseFloat($('#salesrev-current-total').val()) / parseFloat($('#salesrev-current-total').val())) * 100;
+    current_percent_total = roundNumber(current_percent_total,2);    
+    $('#salesrev-current-percent-total').val(current_percent_total);      
   });        
   $('#cos .prior').live('change',function(){
-    doMath('#cos .prior','#cos-prior-total'); 
+    doMath('#cos .prior','#cos-prior-total');
+    update_percent(this, '.prior','.prior-percent');
+    var prior_percent_total = (parseFloat($('#cos-current-total').val()) / parseFloat($('#cos-prior-total').val()) - 1) * 100;
+    prior_percent_total = roundNumber(prior_percent_total,2);    
+    $('#cos-prior-percent-total').val(prior_percent_total);
   });
   $('#cos .budget').live('change',function(){
-    doMath('#cos .budget','#cos-budget-total');    
+    doMath('#cos .budget','#cos-budget-total');
+    update_percent(this,'.budget','.budget-percent');
+    var budget_percent_total = (parseFloat($('#cos-current-total').val()) / parseFloat($('#cos-budget-total').val()) - 1) * 100;
+    budget_percent_total = roundNumber(budget_percent_total,2);    
+    $('#cos-budget-percent-total').val(budget_percent_total);         
   });
   $('#cos .current').live('change',function(){
     doMath('#cos .current','#cos-current-total');
-    update_current('#cos .current','#cos-current-total');
+    update_current(this);
+    update_percent(this,'.prior','.prior-percent');
+    update_percent(this,'.budget','.budget-percent');
+    var prior_percent_total = (parseFloat($('#cos-current-total').val()) / parseFloat($('#cos-prior-total').val()) - 1) * 100;
+    prior_percent_total = roundNumber(prior_percent_total,2);    
+    $('#cos-prior-percent-total').val(prior_percent_total);
+    var budget_percent_total = (parseFloat($('#cos-current-total').val()) / parseFloat($('#cos-budget-total').val()) - 1) * 100;
+    budget_percent_total = roundNumber(budget_percent_total,2);    
+    $('#cos-budget-percent-total').val(budget_percent_total);
+    var current_percent_total = (parseFloat($('#cos-current-total').val()) / parseFloat($('#salesrev-current-total').val())) * 100;
+    current_percent_total = roundNumber(current_percent_total,2);    
+    $('#cos-current-percent-total').val(current_percent_total);
   });    
   $('#salesmarket .prior').live('change',function(){
     doMath('#salesmarket .prior','#salesmarket-prior-total');
@@ -222,13 +279,5 @@ $(document).ready(function(){
   });
   $('#other-current-total').live('change',function(){
     doMath('#other-current-total','#other-current-total');
-  });
-//  $('#salesrev .current').live('blur',function(){
-//    update_current('#salesrev .current','#salesrev-current-total');
-//    });
-//  $('#salesrev .current').live('blur',update_prior);
-//  $('#salesrev .current').live('blur',update_budget);
-//  $('#salesrev .prior').live('blur',update_prior);
-//  $('#salesrev .budget').live('blur',update_budget);
-//  $('#salesrev-current-total').live('blur',update_current);              
+  });         
 });
